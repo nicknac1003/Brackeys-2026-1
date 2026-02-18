@@ -62,7 +62,7 @@ router.post('/update-money', authMiddleware, async (req, res) => {
 
     // Get user's new rank
     const rankResult = await db.query(
-      'SELECT COUNT(*) + 1 AS rank FROM players WHERE money > $1 OR (money = $1 AND last_updated < (SELECT last_updated FROM players WHERE id = $2)))',
+      'SELECT COUNT(*) + 1 AS rank FROM players WHERE money > $1 OR (money = $1 AND last_updated < (SELECT last_updated FROM players WHERE id = $2))',
       [money, userId]
     );
     const rank = rankResult.rows[0].rank;
