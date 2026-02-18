@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/jcgames/auth', authLimiter, authRoutes);
-app.use('/jcgames/users', userRoutes);
+app.use('/jcgames/players', userRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
