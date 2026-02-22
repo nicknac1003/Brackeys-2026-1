@@ -7,7 +7,8 @@ const authMiddleware = require('../middleware/auth');
 router.get('/leaderboard', authMiddleware, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = 10;
+    const pageSize = parseInt(req.query.pageSize) || 10;
+    const limit = pageSize;
     const offset = (page - 1) * limit;
 
     // Validate page number
@@ -36,7 +37,7 @@ router.get('/leaderboard', authMiddleware, async (req, res) => {
         currentPage: page,
         totalPages,
         totalUsers,
-        perPage: limit,
+        perPage: pageSize,
         hasNextPage: page < totalPages,
         hasPreviousPage: page > 1
       }
