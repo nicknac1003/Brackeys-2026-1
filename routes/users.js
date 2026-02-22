@@ -4,7 +4,7 @@ const db = require('../config/database');
 const authMiddleware = require('../middleware/auth');
 
 // Get leaderboard with pagination (protected route)
-router.get('/leaderboard', authMiddleware, async (req, res) => {
+router.get('/leaderboard', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const pageSize = parseInt(req.query.pageSize) || 10;
